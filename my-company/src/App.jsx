@@ -4,7 +4,7 @@ import Home from './components/Home'
 import About from './components/About'
 import Services from './components/Services'
 import Contact from './components/Contact'
-import Layout from './components/Layout'
+import Navbar from './components/Navbar'
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
  
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Navbar />}>
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
