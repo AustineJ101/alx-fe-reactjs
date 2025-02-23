@@ -1,10 +1,10 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Home from './Home'
-import About from './About'
-import Services from './Services'
-import Contact from './Contact'
-import Layout from './Layout'
+import Home from './components/Home'
+import About from './components/About'
+import Services from './components/Services'
+import Contact from './components/Contact'
+import Layout from './components/Layout'
 
 
 function App() {
