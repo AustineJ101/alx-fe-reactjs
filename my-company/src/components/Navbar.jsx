@@ -10,11 +10,11 @@ function Navbar(){
     }
     return(
         <>
-            <nav style ={navStyle}>
-                <Link style={{textDecoration: "none"}} to="home">Home </Link>
-                <Link style={{textDecoration: "none"}} to="about">About</Link>
-                <Link style={{textDecoration: "none"}} to="services">Services </Link>
-                <Link style={{textDecoration: "none"}} to="contact">Contact</Link>
+            <nav style ={{backgroundColor: 'rebeccapurple', padding: '20px', fontSize: '20px', display: 'flex', justifyContent: 'center', gap: '20px'}}>
+                <Link style={{textDecoration: "none", color: 'white'}} to="home">Home </Link>
+                <Link style={{textDecoration: "none", color: 'white'}} to="about">About</Link>
+                <Link style={{textDecoration: "none", color: 'white'}} to="services">Services </Link>
+                <Link style={{textDecoration: "none", color: 'white'}} to="contact">Contact</Link>
             </nav> 
 
             <Outlet />
