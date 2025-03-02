@@ -8,7 +8,9 @@ const useRecipeStore = create((set, get) => ({
         let newRecipe = get().recipes.filter(recipe => recipe.id !== recipeId);
         set({recipes: newRecipe})
     },
-    updateRecipe: (recipe) => set({recipes: recipe});
+    updateRecipe: (recipeId) => {
+        let updatedRecipe = get().recipes.filter(recipe => recipe.id == recipeId)
+    }
 
 }));
 

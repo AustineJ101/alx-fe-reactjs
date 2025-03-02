@@ -1,6 +1,6 @@
 import useRecipeStore from "./recipeStore";
 
-const DeleteRecipeButton = ({ recipeId }) => {
+const useNavigate = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
 
   const handleDelete = () => {
@@ -10,4 +10,4 @@ const DeleteRecipeButton = ({ recipeId }) => {
   return <button onClick={handleDelete}>Delete Recipe</button>;
 };
 
-export default DeleteRecipeButton;
+export default useNavigate;
