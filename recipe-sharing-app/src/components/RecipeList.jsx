@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.filteredRecipes());
+  const recipes = useRecipeStore((state) => state.filteredRecipes);
   const filterRecipes = useRecipeStore((state) => state.filterRecipes);
   const searchTerm = useRecipeStore((state) => state.searchTerm);
 
