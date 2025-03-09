@@ -8,7 +8,7 @@ function RegistrationForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(username, email, password){
+        if(username && email && password){
             setErrors({});
             console.log("Form Submitted", {username, email, password})
         }
