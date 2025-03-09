@@ -2,12 +2,6 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 function Navbar(){
 
-    const navStyle = {
-        display: "flex",
-        gap: "20px",
-        justifyContent: "center",
-        textDecoration: "none"
-    }
     return(
         <>
             <nav style ={{backgroundColor: 'rebeccapurple', padding: '20px', fontSize: '20px', display: 'flex', justifyContent: 'center', gap: '20px'}}>
