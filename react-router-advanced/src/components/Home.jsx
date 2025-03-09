@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuthStore from "./authStore";
 
 function Home(){
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    const login = () => {
-        setIsAuthenticated(true);
-    }
-
-    const logout = () => {
-        setIsAuthenticated(false);
-    }
-
+    const {isAuthenticated, login, logout} = useAuthStore();
+    
     return(
         <>  
             <nav>
