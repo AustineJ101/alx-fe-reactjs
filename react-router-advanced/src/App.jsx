@@ -4,6 +4,7 @@ import Profile from "./components/Profile"
 import ProfileDetails from "./components/ProfileDetails"
 import ProfileSettings from "./components/ProfileSettings"
 import BlogPost from "./components/BlogPost"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
 
@@ -15,7 +16,11 @@ function App() {
           <Route path="details/:user" element={<ProfileDetails />}/>
           <Route path="settings" element={<ProfileSettings />}/>
         </Route>
-        <Route path="/blog/:id" element={<BlogPost />}/>
+        <Route path="/blog/:id" element={
+          <ProtectedRoute>
+            <BlogPost />
+          </ProtectedRoute>
+          }/>
       </Routes>
     </Router>
     
