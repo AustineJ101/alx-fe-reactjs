@@ -11,11 +11,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/profile" element={<Profile />}>
-          <Route path="profile-details" element={<ProfileDetails />}/>
-          <Route path="profile-settings" element={<ProfileSettings />}/>
+          <Route path="details/:user" element={<ProfileDetails />}/>
+          <Route path="settings" element={<ProfileSettings />}/>
         </Route>
       </Routes>
     </Router>
+    
   )
 }
 
