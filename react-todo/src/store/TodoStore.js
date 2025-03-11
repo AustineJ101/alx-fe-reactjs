@@ -22,7 +22,7 @@ const useTodo = create((set) => ({
         }else{
            return  item
         }
-    })
+    }) 
    }))
 }))
 

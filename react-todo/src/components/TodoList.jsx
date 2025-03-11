@@ -54,4 +54,4 @@ function Todos(){
 
 }
 
-export default Todos;
+export default TodoList;
