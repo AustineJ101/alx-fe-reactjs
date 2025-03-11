@@ -2,9 +2,9 @@ import { create } from "zustand";
 
 const useTodo = create((set) => ({
     Todos: [
-        {name: "Write tests", isComplete: false},
-        {name: "Hit the gym", isComplete: false},
-        {name: "Shower", isComplete: false},
+        {name: "Write tests", isComplete: true, id: `${crypto.randomUUID()}`},
+        {name: "Hit the gym", isComplete: false,  id: `${crypto.randomUUID()}`},
+        {name: "Shower", isComplete: false, id: `${crypto.randomUUID()}`},
     ],
 
    addTodo: (item) => set(state => ({
@@ -15,9 +15,13 @@ const useTodo = create((set) => ({
     Todos: state.Todos.filter(item => item.name !== name)
    })),
 
-   markComplete: (name) => set(state => ({
+   toggleComplete: (name) => set(state => ({
     Todos: state.Todos.map(item => {
-        item.name == name? {...item, isComplete: true} : item
+        if(item.name == name){
+           return item.isComplete == true? {...item, isComplete: false}: {...item, isComplete: true};
+        }else{
+           return  item
+        }
     })
    }))
 }))
