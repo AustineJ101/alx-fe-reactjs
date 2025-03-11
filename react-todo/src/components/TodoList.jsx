@@ -1,7 +1,7 @@
 import useTodo from "../store/TodoStore";
 import { useForm } from "react-hook-form";
 
-function Todos(){
+function TodoList(){
     const todos = useTodo(state => state.Todos);
     const deleteTodo = useTodo(state => state.deleteTodo);
     const toggleComplete = useTodo(state => state.toggleComplete);
