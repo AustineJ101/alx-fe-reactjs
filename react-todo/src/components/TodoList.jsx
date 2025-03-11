@@ -1,57 +1,54 @@
-import useTodo from "../store/TodoStore";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 
-function TodoList(){
-    const todos = useTodo(state => state.Todos);
-    const deleteTodo = useTodo(state => state.deleteTodo);
-    const toggleComplete = useTodo(state => state.toggleComplete);
-    const addTodo = useTodo(state => state.addTodo);
+const initialTodos = [
+  { id: 1, text: "Learn React", completed: false },
+  { id: 2, text: "Master Vitest", completed: false },
+];
 
-    const {register, handleSubmit, formState:{ errors }, reset} = useForm();
+export default function TodoList() {
+  const [todos, setTodos] = useState(initialTodos);
+  const [input, setInput] = useState("");
 
-    const onSubmit = (data) => {
-        const item = {name: data.todo, isComplete: false, id: `${crypto.randomUUID()}` }
+  const addTodo = () => {
+    if (input.trim()) {
+      setTodos([...todos, { id: Date.now(), text: input, completed: false }]);
+      setInput("");
+    }
+  };
 
-        addTodo(item);
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
-        reset();
-    };
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
-
-    return(
-        <div>
-            <h2>Todo Items</h2>
-            <form onSubmit={handleSubmit(onSubmit)} style={{marginBottom: "20px"}}>
-                <label htmlFor="todo">Enter Todo Item</label>
-                <input id="todo" type="Text" {...register("todo", {required: "Please enter a todo"})}/>
-                {errors.todo && <p style={{color: "red"}}>{errors.todo.message}</p>}
-
-                <button type="submit">Add Item</button>
-            </form>
-            {todos.length == 0 && <p>No Todo Items Available...</p>}
-            <div style={{display: "flex", gap: "20px"}}>
-                {todos.map(item => (
-                    <div key={item.id} style={{border: "1px solid grey", padding: "20px", borderRadius: "10px"}}>
-                        <h1>{item.name}</h1>
-                        <hr />
-                        <button  onClick={
-                            () => {
-                                toggleComplete(item.name)
-                                setTimeout(() => {deleteTodo(item.name)}, 2000);
-                            }
-                            } style={{color: "white", backgroundColor: "green", border: "none", padding: "5px 10px"}}>
-                           {item.isComplete? "Mark as incomplete" : "Mark as complete"} 
-                        </button>
-
-                        {item.isComplete? <p>Done✅</p> : <p>Pending...</p>}
-                        <button onClick={() => deleteTodo(item.name)} style={{color: "white", backgroundColor: "darkred", border: "none", padding: "5px 10px", borderRadius: "5px"}}>Delete</button>
-                    </div>
-                ))}
-            </div>
-        </div>
-        
-    )
-
+  return (
+    <div>
+      <h2>Todo List</h2>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={addTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo) => (
+          <li
+            key={todo.id}
+            onClick={() => toggleTodo(todo.id)}
+            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+          >
+            {todo.text}
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
-
-export default TodoList;
