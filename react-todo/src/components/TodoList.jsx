@@ -28,17 +28,23 @@ function Todos(){
 
                 <button type="submit">Add Item</button>
             </form>
+            {todos.length == 0 && <p>No Todo Items Available...</p>}
             <div style={{display: "flex", gap: "20px"}}>
                 {todos.map(item => (
                     <div key={item.id} style={{border: "1px solid grey", padding: "20px", borderRadius: "10px"}}>
                         <h1>{item.name}</h1>
                         <hr />
-                        <button  onClick={() => toggleComplete(item.name)} style={{color: "white", backgroundColor: "green", border: "none", padding: "5px 10px"}}>
+                        <button  onClick={
+                            () => {
+                                toggleComplete(item.name)
+                                setTimeout(() => {deleteTodo(item.name)}, 2000);
+                            }
+                            } style={{color: "white", backgroundColor: "green", border: "none", padding: "5px 10px"}}>
                            {item.isComplete? "Mark as incomplete" : "Mark as complete"} 
                         </button>
 
-                        {item.isComplete? <p>Completed✅</p> : <p>Incomplete...</p>}
-                        <button onClick={() => deleteTodo(item.name)}>Delete</button>
+                        {item.isComplete? <p>Done✅</p> : <p>Pending...</p>}
+                        <button onClick={() => deleteTodo(item.name)} style={{color: "white", backgroundColor: "darkred", border: "none", padding: "5px 10px", borderRadius: "5px"}}>Delete</button>
                     </div>
                 ))}
             </div>
