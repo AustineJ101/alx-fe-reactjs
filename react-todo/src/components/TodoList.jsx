@@ -24,9 +24,11 @@ export default function TodoList() {
     );
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = (id, e) => {
+    e.stopPropagation();
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
+  
 
   return (
     <div>
@@ -45,7 +47,7 @@ export default function TodoList() {
             style={{ textDecoration: todo.completed ? "line-through" : "none" }}
           >
             {todo.text}
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button onClick={(e) => deleteTodo(todo.id, e)}>Delete</button>
           </li>
         ))}
       </ul>
