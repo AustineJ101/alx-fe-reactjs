@@ -4,9 +4,10 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
-  theme: {
-    extend: {},
-  },
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: false,
+  theme: { extend: {} },
+  variants: { extend: {} },
   plugins: [],
 }
 
