@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import recipesData from "../data.json"
 import { Link } from "react-router-dom";
+import AddRecipeForm from "./AddRecipeForm";
 
 function HomePage(){
     const [recipes, setRecipes] = useState([]);
@@ -29,6 +30,8 @@ function HomePage(){
                 
                 
             })}
+
+            <AddRecipeForm addRecipe={setRecipes}/>
         </div>
     )
 }
