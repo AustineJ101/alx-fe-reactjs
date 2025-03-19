@@ -3,7 +3,7 @@ import { useState } from "react";
 function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [instructions, setInstructions] = useState("");
+  const [steps, setSteps] = useState("");
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -11,7 +11,7 @@ function AddRecipeForm() {
 
     if (!title.trim()) validationErrors.title = "Recipe title is required.";
     if (!ingredients.trim()) validationErrors.ingredients = "Ingredients are required.";
-    if (!instructions.trim()) validationErrors.instructions = "Instructions are required.";
+    if (!steps.trim()) validationErrors.steps = "Instructions are required.";
 
     return validationErrors;
   };
@@ -60,10 +60,10 @@ function AddRecipeForm() {
             <textarea
               className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows="4"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
+              value={steps}
+              onChange={(e) => setSteps(e.target.value)}
             />
-            {errors.instructions && <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>}
+            {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>}
           </div>
 
           <button
