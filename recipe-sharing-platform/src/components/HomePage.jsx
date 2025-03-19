@@ -31,7 +31,7 @@ function HomePage(){
                 
             })}
 
-            <AddRecipeForm addRecipe={setRecipes}/>
+            <AddRecipeForm />
         </div>
     )
 }
