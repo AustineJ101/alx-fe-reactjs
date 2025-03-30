@@ -2,7 +2,7 @@ import axios from "axios";
 
 const fetchUserData = async (username, location, minRepos) => {
     try {
-        let query = `q=${username}`;
+        let query = `q=${username}`; // Base query
 
         if (location) query += `+location:${location}`;
         if (minRepos) query += `+repos:>=${minRepos}`;
