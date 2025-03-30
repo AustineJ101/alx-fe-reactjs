@@ -14,7 +14,7 @@ function Search () {
         setIsLoading(true);
         const data =  await fetchUserData(username);
         if(data){
-            setUserData({name: data.name, avatar: data.avatar_url, link: data.html_url});
+            setUserData({name: data.login, avatar: data.avatar_url, link: data.html_url});
             setIsLoading(false);
         }else{
             setError("Looks like we cant find the user");
@@ -35,7 +35,7 @@ function Search () {
             {userData && (
                 <div className="flex items-center gap-4 ">
                     <img className="w-16 h-16 rounded-full" src={userData.avatar}/>
-                    <h1 className="text-xl font-semibold">{userData.name}</h1>
+                    <h1 className="text-xl font-semibold">{userData.login}</h1>
                     <a className="underline text-blue-500" href={userData.link} target="_blank">{userData? "GitHub" : ""}</a>
                 </div>
             )}
